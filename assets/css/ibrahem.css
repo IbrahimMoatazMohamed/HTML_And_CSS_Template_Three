@@ -731,6 +731,90 @@ header .main-nav li .links li a i {
   margin: 10px 0 25px;
 }
 /* End Team */
+/* Start Services */
+.services {
+  padding: var(--main-padding) 0;
+  background-color: var(--section-background);
+  position: relative;
+}
+.services .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 40px;
+}
+.services .box {
+  position: relative;
+  counter-increment: services;
+  background-color: white;
+  transition: var(--main-transition);
+  box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.services .box::before {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 0;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -3px;
+  background-color: var(--main-color);
+  transition: var(--main-transition);
+}
+.services .box:hover {
+  top: -10px;
+}
+.services .box:hover::before {
+  width: 100%;
+}
+.services .box > i {
+  margin: 30px auto 20px;
+  display: block;
+  color: #d5d5d5;
+  text-align: center;
+}
+.services .box > h3 {
+  color: var(--main-color);
+  text-align: center;
+  padding: 20px 0 40px;
+  font-size: 25px;
+}
+.services .box .info {
+  position: relative;
+  padding: 15px;
+  background-color: #f9f9f9;
+  text-align: right;
+}
+.services .box .info a {
+  display: inline;
+  color: var(--main-color);
+}
+.services .box .info::after,
+.services .box .info::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+}
+.services .box .info::before {
+  content: "0" counter(services);
+  background-color: var(--main-color);
+  color: white;
+  display: flex;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  width: 80px;
+  padding-right: 15px;
+}
+.services .box .info::after {
+  background-color: #d5d5d5;
+  left: 80px;
+  width: 50px;
+  transform: skewX(-30deg);
+}
+/* End Services */
 /* Start Animation */
 @-webkit-keyframes up-and-down {
   0%,
