@@ -558,24 +558,31 @@ header .main-nav li .links li a i {
 .features .rectangle h2 + p + a {
   margin: 0 auto 30px;
   color: rgb(var(--main-features-color));
+  border: 4px solid rgb(var(--main-features-color));
   font-size: 22px;
   font-weight: bold;
   text-transform: capitalize;
-  border: 4px solid rgb(var(--main-features-color));
   padding: 10px 30px;
   border-radius: 10px;
   transition: var(--main-transition);
-  background: linear-gradient(
-    to right,
-    rgb(var(--main-features-color)) 50%,
-    white 50%
-  );
-  background-size: 200%;
-  background-position: right bottom;
+  position: relative;
 }
 .features .rectangle:hover h2 + p + a {
   color: white;
-  background-position: left bottom;
+}
+.features .rectangle h2 + p + a::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 105%;
+  width: 0;
+  background-color: rgb(var(--main-features-color));
+  transition: var(--main-transition);
+}
+.features .rectangle:hover h2 + p + a::before {
+  width: 102%;
 }
 /* End Features */
 /* Start Testimonials */
@@ -746,8 +753,11 @@ header .main-nav li .links li a i {
   position: relative;
   counter-increment: services;
   background-color: white;
-  transition: var(--main-transition);
+  transition: top var(--main-transition);
   box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.services .box:hover {
+  top: -10px;
 }
 .services .box::before {
   content: "";
@@ -759,9 +769,6 @@ header .main-nav li .links li a i {
   top: -3px;
   background-color: var(--main-color);
   transition: var(--main-transition);
-}
-.services .box:hover {
-  top: -10px;
 }
 .services .box:hover::before {
   width: 100%;
@@ -815,6 +822,58 @@ header .main-nav li .links li a i {
   transform: skewX(-30deg);
 }
 /* End Services */
+/* Start Skills */
+.our-skills {
+  padding: var(--main-padding) 0;
+  position: relative;
+}
+.our-skills .container {
+  display: flex;
+  gap: 40px;
+}
+.our-skills img {
+  max-width: 100%;
+}
+@media (max-width: 991px) {
+  .our-skills img {
+    display: none;
+  }
+}
+.our-skills .container .skills {
+  flex: 1;
+}
+.our-skills .container .skills .skill .percentage {
+  width: 100%;
+  background-color: #eeeeee;
+  height: 30px;
+  margin: 20px 0;
+  position: relative;
+}
+.our-skills .container .skills .skill .percentage::before {
+  content: attr(data-percentage);
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: var(--main-color);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  padding: 3px 5px;
+}
+.our-skills .container .skills .skill .percentage span {
+  background-color: var(--main-color);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 1;
+}
+/* End Skills */
 /* Start Animation */
 @-webkit-keyframes up-and-down {
   0%,
